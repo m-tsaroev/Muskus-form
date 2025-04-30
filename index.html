@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./src/styles/style.css">
+  <title>Muskus | Form</title>
+  <script type="module" src="./src/main.js" defer></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header__body-inner _container">
+      <a href="/" class="inner__logo">Muskus</a>
+      <div class="switcher__theme" data-js-theme-swothcer-btn>
+        <span class="switcher__theme-span">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-moon">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </span>
+        <span class="switcher__theme-span">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-sun"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="form__section">
+      <div class="form__section-back"></div>
+      <form action="/" class="form" method="post" novalidate data-js-form>
+        <p class="field">
+          <label 
+          for="login" 
+          class="field__label"
+          >
+            Login
+          </label>
+
+          <span class="field__errors" data-js-form-field-errors id="login-password"></span>
+
+          <input 
+          type="login" 
+          id="login" 
+          name="login" 
+          class="login"
+          required
+          minlength="4"
+          maxlength="16"
+          aria-errormessage="login"
+          >
+        </p>
+        <p class="field">
+          <label 
+          for="password" 
+          class="field__label"
+          >
+            Password
+          </label>
+
+          <span class="field__errors" data-js-form-field-errors id="password-errors"></span>
+
+          <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          class="password" 
+          required
+          minlength="8"
+          maxlength="16"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}"
+          title="Пароль должен быть длиной от 8 до 16 символов, включать как минимум одну цифру, одну букву в нижнем и одну букву в верхнем регистре"
+          aria-errormessage="password-errors"
+          data-js-form-field-password
+          >
+        </p>
+        <p class="field">
+          <label 
+          for="password" 
+          class="field__label"
+          >
+            Confirm password
+          </label>
+
+          <span class="field__errors" data-js-form-field-errors id="confirm-password-errors"></span>
+
+          <input 
+          type="password" 
+          id="password" 
+          class="confirm__password"
+          required
+          aria-errormessage="confirm-password-errors"
+          data-js-form-field-password-confirm
+          >
+        </p>
+        <fieldset class="radios">
+          <legend class="radios__legend">Your gender</legend>
+
+          <div class="radios__fields">
+            <input type="radio" name="gender" id="man" value="Man" required aria-errormessage="gender-errors">
+            <label for="man">Man</label>
+
+            <input type="radio" name="gender" id="woman" value="Woman" required aria-errormessage="gender-errors">
+            <label for="woman">Woman</label>
+          </div>
+          <span class="field__errors" data-js-form-field-errors id="gender-errors"></span>
+        </fieldset>
+        <button class="button" type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer"></footer>
+  <div class="message" data-js-message>
+  </div>
+
+  <div class="animation-box"></div>
+</body>
+
+</html>
