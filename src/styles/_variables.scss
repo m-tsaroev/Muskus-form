@@ -1,0 +1,38 @@
+@use 'helpers' as *;
+
+:root {
+  --color-dark-1: #16171b;
+  --color-dark-2: #080a0e;
+  --color-dark-3: #25262b;
+
+  --color-grey-1: #333333;
+  
+  --color-green-1: #44944A;
+
+  --color-semi-light: #c2c2c2;
+  --color-light: #FFFFFF;
+
+  --color-accent: #FFD11A;
+
+  --container-width: 1200px;
+  --container-padding-x: 15px;
+  
+  --border-radius-circle: 50%;
+
+  --transition-alt: .1s;
+  --transition-duration: .2s;
+  --transition: .2s linear;
+
+  @include desktop {
+    --container-width: 1080px;
+  }
+}
+
+html.is-dark-theme {
+  --color-light: #000000;
+  --color-semi-light: #25262b;
+
+  --color-dark-2: #c2c2c2;
+  --color-dark-1: #ffffff;
+  --color-dark-3: #8f8f8f;
+}

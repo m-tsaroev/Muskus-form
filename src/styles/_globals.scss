@@ -1,0 +1,17 @@
+@use 'helpers' as *;
+
+body {
+  font-family: 'Nunito sans', sans-serif;
+  background-color: var(--color-dark-1);
+  font-weight: 500;
+  color: var(--color-light);
+  font-size: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+main {
+  @include flex-center;
+}

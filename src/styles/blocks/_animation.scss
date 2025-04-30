@@ -1,0 +1,37 @@
+@use '../helpers' as *;
+
+.animation-box {
+  @include mobile {
+    display: none;
+  }
+
+  position: fixed;
+  left: 50%;
+  bottom: -85%;
+  translate: -50% 0;
+  padding: 30px 0px;
+  width: 80vw;
+  height: 80vh;
+  background-color: var(--color-semi-light);
+  box-shadow: 0 0 80px var(--color-semi-light);
+  border-radius: 50%;
+  animation-name: shadow-animation;
+  animation-iteration-count: infinite;
+  animation-duration: 8s;
+  animation-timing-function: linear;
+}
+
+@keyframes shadow-animation {
+  0% {
+    box-shadow: 0 0 80px var(--color-semi-light);
+  }
+
+  50% {
+    box-shadow: 0 0 150px var(--color-semi-light);
+  }
+
+  100% {
+    box-shadow: 0 0 80px var(--color-semi-light);
+  }
+}
+

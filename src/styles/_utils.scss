@@ -1,0 +1,31 @@
+@use 'helpers' as *;
+
+._container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visible-desktop {
+  @include desktop-above{
+    display: none !important;
+  }
+}
+
+.visible-tablet {
+  @include tablet-above{
+    display: none !important;
+  }
+}
+
+.visible-mobile {
+  @include mobile-above{
+    display: none !important;
+  }
+}
+
+.visible-mobile-small {
+  @include mobile-small-above{
+    display: none !important;
+  }
+}
