@@ -8,6 +8,8 @@
   background-color: var(--color-dark-3);
   border: 2px solid var(--color-dark-2);
   transition: 0.3s ease-in-out;
+  left: 50%;
+  transform: translateX(-50%);
   
   @include flex-center;
 

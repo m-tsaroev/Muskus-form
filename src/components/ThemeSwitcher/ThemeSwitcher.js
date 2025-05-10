@@ -1,6 +1,7 @@
 class ThemeSwitcher {
   selectors = {
     switcherButton: "[data-js-theme-swothcer-btn]",
+    headerLogo: '[data-js-header-logo]'
   }
 
   themes = {
@@ -23,10 +24,16 @@ class ThemeSwitcher {
   }
 
   get isDarkThemeChanged() {
-    return localStorage.getItem(this.storageKey) == this.themes.dark
+    return localStorage.getItem(this.storageKey) === this.themes.dark
   }
 
   setInitialTheme() {
+    if (!this.isDarkThemeChanged) {
+      document.querySelector(this.selectors.headerLogo).src = './images/logo-light.png'
+    } else {
+      document.querySelector(this.selectors.headerLogo).src = './images/logo-dark.png'
+    }
+
     document.documentElement.classList.toggle(
       this.stateClasses.isDarkTheme,
       this.isDarkThemeChanged
@@ -39,7 +46,7 @@ class ThemeSwitcher {
       this.isDarkThemeChanged ? this.themes.light : this.themes.dark
     )
 
-    document.documentElement.classList.toggle(this.stateClasses.isDarkTheme)
+    this.setInitialTheme()
   }
 
   bindEvents() {
