@@ -5,20 +5,21 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--color-dark-2);
-  padding: 2rem 2.5rem;
-  border-radius: 3rem;
+  padding: rems(40);
+  border: rems(1) solid var(--color-dark);
+  border-radius: rems(60);
   text-align: center;
-  row-gap: 0.5rem;
+  row-gap: rems(18);
   width: auto;
   height: auto;
   position: relative;
   z-index: 2;
+  box-shadow: 0 0 rems(17) var(--color-accent);
 
   label {
     font-size: 16px;
   }
-  
+
   @include tablet {
     row-gap: 0.5rem;
     border-radius: 2rem;
@@ -27,10 +28,9 @@
   .field__errors:empty {
     scale: 0;
   }
-  
-  .field:has([required]) .field__label::after,
-  .radios:has([required]) .radios__legend::after {
-    content: "*";
+
+  .field:has([required]) .field__label::after {
+    content: '*';
     padding-inline: 0.15em;
     color: var(--color-accent);
   }
@@ -39,6 +39,7 @@
     display: flex;
     flex-direction: column;
     transition: var(--transition);
+    align-items: start;
 
     &__errors {
       color: var(--color-accent);
@@ -49,6 +50,7 @@
 
     &__label {
       font-size: 16px;
+      font-weight: 500;
 
       @include tablet {
         font-size: 14px;
@@ -60,17 +62,17 @@
     }
 
     input {
+      width: rems(320);
+      height: rems(40);
       background: none;
       border: 1px solid var(--color-semi-light);
       border-radius: 3rem;
-      height: 2.1rem;
       color: var(--color-light);
       padding-inline: 0.5rem;
       outline: 1px solid transparent;
       transition: var(--transition);
       font-weight: 400;
       font-size: 14px;
-      width: 250px;
 
       @include tablet {
         width: 250px;
@@ -96,352 +98,43 @@
     }
   }
 
-  .radios {
-    border: 2px solid var(--color-grey-1);
-    border-radius: 300rem;
-    padding-bottom: .3rem;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    &__legend {
-      padding-inline: 3px;
-    }
-  }
-
   .button {
-    width: 80%;
-    background-color: var(--color-dark-3);
-    padding-block: 0.2rem;
-    border-radius: 3rem;
+    width: rems(250);
+    height: rems(50);
+    border: rems(1) solid var(--color-dark);
+    border-radius: rems(30);
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 16px;
-    transition: var(--transition-alt) linear;
-    border: 2px solid var(--color-dark-1);
+    font-size: rems(22);
+    transition: 0.2s linear;
     color: var(--color-light);
+    background: transparent;
+    text-align: center;
     position: relative;
+    overflow: hidden;
 
-    @include tablet {
-      height: 2rem;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -120%;
+      width: 250%;
+      height: 640%;
+      background-color: var(--color-accent);
+      z-index: -1;
+      transition: .2s linear;
+      filter: blur(rems(85));
     }
 
     @include hover {
-      background-color: var(--color-semi-light);
-      color: var(--color-dark-1);
+      color: #fff;
+      &::before {
+        left: -20%;
+      }
     }
 
     &:focus {
-      background-color: var(--color-light);
-      color: #000;
+      background-color: var(--color-accent);
     }
-  }
-
-  input[type="radio"] {
-    width: 10px;
-    height: 10px;
-    margin-right: 10px;
-    border-radius: 50%;
-    outline: 2px solid var(--color-dark-3);
-    appearance: none;
-    outline-offset: 2px;
-    transition: var(--transition);
-    cursor: pointer;
-
-    @include hover {
-      background-color: var(--color-semi-light);
-      box-shadow: 0 0 1rem 0 var(--color-semi-light);
-    }
-
-    &:focus {
-      box-shadow: 0 0 1rem 0 var(--color-semi-light);
-    }
-  }
-
-  input[type="radio"]:checked {
-    background-color: var(--color-light);
-    outline-color: var(--color-light);
-  }
-}
-
-.box {
-  color: #fff;
-  width: 100px;
-  height: 100px;
-  background-color: #000;
-  
-  z-index: 100;
-  text-align: center;
-  font-size: 25px;
-}
-
-.form__section {
-  position: relative;
-  scale: 1;
-  opacity: 1;
-  animation-name: start-form;
-  animation-timing-function: ease;
-  animation-duration: 0.5s;
-  animation-iteration-count: 1;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 2%;
-    top: 2%;
-    width: 100px;
-    height: 100px;
-    background-color: var(--color-light);
-    z-index: -12;
-    border-radius: 50%;
-    box-shadow: 0 0 50px var(--color-semi-light);
-    animation-name: before-animation;
-    animation-duration: 30s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-
-    @include tablet {
-      width: 50px;
-      height: 50px; 
-
-      animation-name: before-animation-tablet;
-    }
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    translate: -100% 0;
-    width: 100px;
-    height: 100px;
-    z-index: -12;
-    border-radius: 50%;
-    box-shadow: 0 0 50px var(--color-semi-light);
-    animation-name: after-animation;
-    animation-duration: 30s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-
-    @include tablet {
-      width: 50px;
-      height: 50px; 
-
-      animation-name: after-animation-tablet;
-    }
-  }
-}
-
-@keyframes before-animation {
-  0% {
-    left: 0;
-    top: 0;
-  }
-
-  20% {
-    left: 0;
-    top: 100%;
-    translate: 0 -100%;
-  }
-
-  25% {
-    height: 200px;
-  }
-
-  30% {
-    height: 100px;
-  }
-
-  35% {
-    height: 250px;
-    width: 250px;
-  }
-
-  40% {
-    left: 100%;
-    top: 100%;
-    translate: -105% -105%;
-    height: 100px;
-    width: 100px;
-  }
-
-  60% {
-    left: 100%;
-    top: 0;
-    translate: -100% 0;
-  }
-
-}
-
-@keyframes after-animation {
-  0% {
-    left: 100%;
-    top: 50%;
-  }
-
-  10% {
-    height: 200px;
-  }
-
-  20% {
-    left: 100%;
-    top: 0;
-    translate: -100% 0;
-    height: 100px;
-  }
-
-  30% {
-    width: 50px;
-  }
-  
-  40% {
-    left: 0;
-    top: 0;
-    translate: 0 0;
-    width: 100px;
-  }
-
-  50% {
-    height: 200px;
-  }
-
-  60% {
-    top: 98%;
-    left: 2%;
-    translate: 0 -100%;
-    height: 100px;
-    width: 50px;
-  }
-
-  80% {
-    width: 200px;
-    height: 125px;
-  }
-
-  90% {
-    width: 100px;
-    height: 100px;
-  }
-
-  100% {
-    left: 100%;
-    top: 50%;
-    translate: -100% 0;
-  }
-}
-
-@keyframes start-form {
-  from {
-    scale: 0.8;
-    opacity: 0.4;
-  }
-  to {
-    scale: 1;
-    opacity: 1;
-  }
-}
-
-@keyframes before-animation-tablet {
-  0% {
-    left: 2%;
-    top: 2%;
-  }
-
-  20% {
-    left: 2%;
-    top: 100%;
-    translate: 0 -100%;
-  }
-
-  25% {
-    height: 150px;
-  }
-
-  30% {
-    height: 60px;
-  }
-
-  35% {
-    height: 150px;
-    width: 200px;
-  }
-
-  40% {
-    left: 98%;
-    top: 98%;
-    translate: -105% -105%;
-    height: 30px;
-    width: 30px;
-  }
-
-  60% {
-    left: 98%;
-    top: 2%;
-    translate: -100% 0;
-  }
-
-  100% {
-    left: 2%;
-    top: 2%;
-  } 
-
-}
-
-@keyframes after-animation-tablet {
-  0% {
-    left: 100%;
-    top: 50%;
-  }
-
-  10% {
-    height: 150px;
-  }
-
-  20% {
-    left: 100%;
-    top: 2%;
-    translate: -100% 0;
-    height: 50px;
-  }
-
-  30% {
-    width: 20px;
-  }
-  
-  40% {
-    left: 0;
-    top: 0;
-    translate: 0 0;
-    width: 50px;
-  }
-
-  50% {
-    height: 150px;
-  }
-
-  60% {
-    top: 98%;
-    left: 0;
-    translate: 0 -100%;
-    height: 50px;
-    width: 20px;
-  }
-
-  80% {
-    width: 200px;
-    height: 75px;
-  }
-
-  90% {
-    width: 50px;
-    height: 50px;
-  }
-
-  100% {
-    left: 100%;
-    top: 50%;
-    translate: -100% 0;
   }
 }

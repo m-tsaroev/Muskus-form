@@ -4,6 +4,7 @@
   --color-dark-1: #16171b;
   --color-dark-2: #080a0e;
   --color-dark-3: #25262b;
+  --color-dark: #000000;
 
   --color-grey-1: #333333;
   
@@ -12,9 +13,11 @@
   --color-semi-light: #c2c2c2;
   --color-light: #FFFFFF;
 
-  --color-accent: #FFD11A;
+  --color-accent: #797979;
 
-  --container-width: 1200px;
+  --color-bg: var(--color-light);
+
+  --container-width: 1440px;
   --container-padding-x: 15px;
   
   --border-radius-circle: 50%;
@@ -24,7 +27,7 @@
   --transition: .2s linear;
 
   @include desktop {
-    --container-width: 1080px;
+    --container-width: 1155px;
   }
 }
 

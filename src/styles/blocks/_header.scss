@@ -35,13 +35,12 @@
     justify-content: center;
     cursor: pointer;
     gap: 1rem;
-    background-color: var(--color-dark-3);
     border-radius: 50rem;
-    border: 0.3rem solid var(--color-dark-3);
-    outline: 0.1rem solid transparent;
+    border: rems(7) solid transparent;
+    outline: rems(1) solid var(--color-light);
     padding: 0.4rem;
     box-shadow: 0 0 8px var(--color-dark-1);
-    transition: .2s linear;
+    transition: 0.2s linear;
 
     @include hover {
       outline: 1px solid var(--color-light);
@@ -52,9 +51,9 @@
       width: auto;
       height: auto;
       line-height: 0;
-      svg {
-        stroke: var(--color-light);
-        width: 100%;
+
+      &:first-child svg {
+        stroke: var(--color-dark);
       }
 
       z-index: 20;
@@ -67,7 +66,7 @@
       position: absolute;
       left: 0;
       top: 0;
-      background-color: var(--color-dark-2);
+      background-color: var(--color-light);
       border-radius: 50%;
       transition: var(--transition);
     }
@@ -78,5 +77,18 @@ html.is-dark-theme {
   .switcher__theme::before {
     left: 100%;
     transform: translateX(-100%);
+  }
+
+  .switcher__theme-span {
+    &:first-child {
+      svg {
+        stroke: var(--color-light)
+      }
+    }
+    &:last-child {
+      svg {
+        stroke: var(--color-dark);
+      }
+    }
   }
 }
