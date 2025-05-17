@@ -29,6 +29,10 @@
   }
 
   .switcher__theme {
+    --top: #{rems(13)};
+    --left: #{rems(14)};
+
+    box-sizing: border-box;
     position: relative;
     display: flex;
     align-items: center;
@@ -36,9 +40,8 @@
     cursor: pointer;
     gap: 1rem;
     border-radius: 50rem;
-    border: rems(7) solid transparent;
-    outline: rems(1) solid var(--color-border);
-    padding: 0.4rem;
+    border: rems(1) solid var(--color-border);
+    padding: var(--top) var(--left);
 
     transition: 0.1s linear;
 
@@ -67,11 +70,11 @@
 
     &::before {
       content: '';
-      height: 100%;
-      aspect-ratio: 1;
+      width: rems(40);
+      height: rems(40);
       position: absolute;
-      left: 0;
-      top: 0;
+      left: calc(var(--left) - rems(8));
+      top: calc(var(--top) - rems(8));
       background-color: var(--color-font);
       border-radius: 50%;
       transition: var(--transition);
@@ -81,7 +84,7 @@
 
 html.is-dark-theme {
   .switcher__theme::before {
-    left: 100%;
+    left: calc(100% - (var(--left) - rems(8)));
     transform: translateX(-100%);
   }
 }

@@ -332,6 +332,9 @@ main {
   text-transform: uppercase;
 }
 .header .switcher__theme {
+  --top: 0.8125rem;
+  --left: 0.875rem;
+  box-sizing: border-box;
   position: relative;
   display: flex;
   align-items: center;
@@ -339,9 +342,8 @@ main {
   cursor: pointer;
   gap: 1rem;
   border-radius: 50rem;
-  border: 0.4375rem solid transparent;
-  outline: 0.0625rem solid var(--color-border);
-  padding: 0.4rem;
+  border: 0.0625rem solid var(--color-border);
+  padding: var(--top) var(--left);
   transition: 0.1s linear;
 }
 @media (hover: hover) {
@@ -369,18 +371,18 @@ main {
 }
 .header .switcher__theme::before {
   content: "";
-  height: 100%;
-  aspect-ratio: 1;
+  width: 2.5rem;
+  height: 2.5rem;
   position: absolute;
-  left: 0;
-  top: 0;
+  left: calc(var(--left) - 0.5rem);
+  top: calc(var(--top) - 0.5rem);
   background-color: var(--color-font);
   border-radius: 50%;
   transition: var(--transition);
 }
 
 html.is-dark-theme .switcher__theme::before {
-  left: 100%;
+  left: calc(100% - (var(--left) - 0.5rem));
   transform: translateX(-100%);
 }
 
