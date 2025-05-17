@@ -16,6 +16,9 @@
   --color-accent: #797979;
 
   --color-bg: var(--color-light);
+  --color-font: var(--color-dark);
+  --color-accent-font: var(--color-accent);
+  --color-border: var(--color-dark);
 
   --container-width: 1440px;
   --container-padding-x: 15px;
@@ -32,8 +35,9 @@
 }
 
 html.is-dark-theme {
-  --color-light: #000000;
-  --color-semi-light: #25262b;
+  --color-bg: var(--color-dark);
+  --color-font: var(--color-light);
+  --color-border: var(--color-light);
 
   --color-dark-2: #c2c2c2;
   --color-dark-1: #ffffff;

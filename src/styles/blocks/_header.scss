@@ -37,13 +37,13 @@
     gap: 1rem;
     border-radius: 50rem;
     border: rems(7) solid transparent;
-    outline: rems(1) solid var(--color-light);
+    outline: rems(1) solid var(--color-border);
     padding: 0.4rem;
-    box-shadow: 0 0 8px var(--color-dark-1);
-    transition: 0.2s linear;
+
+    transition: 0.1s linear;
 
     @include hover {
-      outline: 1px solid var(--color-light);
+      box-shadow: 0 0 rems(10) var(--color-border);
     }
 
     &-span {
@@ -52,7 +52,13 @@
       height: auto;
       line-height: 0;
 
-      &:first-child svg {
+      &:first-child svg,
+      &:first-child svg * {
+        stroke: var(--color-light);
+      }
+
+      &:last-child svg,
+      &:last-child svg * {
         stroke: var(--color-dark);
       }
 
@@ -66,7 +72,7 @@
       position: absolute;
       left: 0;
       top: 0;
-      background-color: var(--color-light);
+      background-color: var(--color-font);
       border-radius: 50%;
       transition: var(--transition);
     }
@@ -77,18 +83,5 @@ html.is-dark-theme {
   .switcher__theme::before {
     left: 100%;
     transform: translateX(-100%);
-  }
-
-  .switcher__theme-span {
-    &:first-child {
-      svg {
-        stroke: var(--color-light)
-      }
-    }
-    &:last-child {
-      svg {
-        stroke: var(--color-dark);
-      }
-    }
   }
 }

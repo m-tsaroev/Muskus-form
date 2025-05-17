@@ -29,9 +29,9 @@ class ThemeSwitcher {
 
   setInitialTheme() {
     if (!this.isDarkThemeChanged) {
-      document.querySelector(this.selectors.headerLogo).src = './images/logo-light.png'
-    } else {
       document.querySelector(this.selectors.headerLogo).src = './images/logo-dark.png'
+    } else {
+      document.querySelector(this.selectors.headerLogo).src = './images/logo-light.png'
     }
 
     document.documentElement.classList.toggle(

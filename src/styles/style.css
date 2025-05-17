@@ -260,6 +260,9 @@ svg * {
   --color-light: #FFFFFF;
   --color-accent: #797979;
   --color-bg: var(--color-light);
+  --color-font: var(--color-dark);
+  --color-accent-font: var(--color-accent);
+  --color-border: var(--color-dark);
   --container-width: 1440px;
   --container-padding-x: 15px;
   --border-radius-circle: 50%;
@@ -274,8 +277,9 @@ svg * {
 }
 
 html.is-dark-theme {
-  --color-light: #000000;
-  --color-semi-light: #25262b;
+  --color-bg: var(--color-dark);
+  --color-font: var(--color-light);
+  --color-border: var(--color-light);
   --color-dark-2: #c2c2c2;
   --color-dark-1: #ffffff;
   --color-dark-3: #8f8f8f;
@@ -283,9 +287,9 @@ html.is-dark-theme {
 
 body {
   font-family: "Nunito sans", sans-serif;
-  background-color: var(--color-dark-1);
+  background-color: var(--color-bg);
   font-weight: 500;
-  color: var(--color-bg);
+  color: var(--color-font);
   font-size: 16px;
   overflow: hidden;
   display: flex;
@@ -336,19 +340,18 @@ main {
   gap: 1rem;
   border-radius: 50rem;
   border: 0.4375rem solid transparent;
-  outline: 0.0625rem solid var(--color-light);
+  outline: 0.0625rem solid var(--color-border);
   padding: 0.4rem;
-  box-shadow: 0 0 8px var(--color-dark-1);
-  transition: 0.2s linear;
+  transition: 0.1s linear;
 }
 @media (hover: hover) {
   .header .switcher__theme:hover {
-    outline: 1px solid var(--color-light);
+    box-shadow: 0 0 0.625rem var(--color-border);
   }
 }
 @media (hover: none) {
   .header .switcher__theme:active {
-    outline: 1px solid var(--color-light);
+    box-shadow: 0 0 0.625rem var(--color-border);
   }
 }
 .header .switcher__theme-span {
@@ -358,7 +361,10 @@ main {
   line-height: 0;
   z-index: 20;
 }
-.header .switcher__theme-span:first-child svg {
+.header .switcher__theme-span:first-child svg, .header .switcher__theme-span:first-child svg * {
+  stroke: var(--color-light);
+}
+.header .switcher__theme-span:last-child svg, .header .switcher__theme-span:last-child svg * {
   stroke: var(--color-dark);
 }
 .header .switcher__theme::before {
@@ -368,7 +374,7 @@ main {
   position: absolute;
   left: 0;
   top: 0;
-  background-color: var(--color-light);
+  background-color: var(--color-font);
   border-radius: 50%;
   transition: var(--transition);
 }
@@ -377,12 +383,6 @@ html.is-dark-theme .switcher__theme::before {
   left: 100%;
   transform: translateX(-100%);
 }
-html.is-dark-theme .switcher__theme-span:first-child svg {
-  stroke: var(--color-light);
-}
-html.is-dark-theme .switcher__theme-span:last-child svg {
-  stroke: var(--color-dark);
-}
 
 .form {
   display: flex;
@@ -390,7 +390,7 @@ html.is-dark-theme .switcher__theme-span:last-child svg {
   justify-content: space-between;
   align-items: center;
   padding: 2.5rem;
-  border: 0.0625rem solid var(--color-dark);
+  border: 0.0625rem solid var(--color-border);
   border-radius: 3.75rem;
   text-align: center;
   row-gap: 1.125rem;
@@ -399,6 +399,10 @@ html.is-dark-theme .switcher__theme-span:last-child svg {
   position: relative;
   z-index: 2;
   box-shadow: 0 0 1.0625rem var(--color-accent);
+}
+.form__title {
+  font-size: 1.5rem;
+  user-select: none;
 }
 .form label {
   font-size: 16px;
@@ -426,8 +430,9 @@ html.is-dark-theme .switcher__theme-span:last-child svg {
 .form .field__errors {
   color: var(--color-accent);
   transition: var(--transition);
-  font-size: 9px;
+  font-size: 0.75rem;
   max-width: 240px;
+  text-align: left;
 }
 .form .field__label {
   font-size: 16px;
@@ -447,9 +452,9 @@ html.is-dark-theme .switcher__theme-span:last-child svg {
   width: 20rem;
   height: 2.5rem;
   background: none;
-  border: 1px solid var(--color-semi-light);
+  border: 1px solid var(--color-border);
   border-radius: 3rem;
-  color: var(--color-light);
+  color: var(--color-font);
   padding-inline: 0.5rem;
   outline: 1px solid transparent;
   transition: var(--transition);
@@ -469,17 +474,16 @@ html.is-dark-theme .switcher__theme-span:last-child svg {
 }
 @media (hover: hover) {
   .form .field input:hover {
-    box-shadow: 0 0 1rem 0 var(--color-semi-light);
+    box-shadow: 0 0 0.625rem var(--color-border);
   }
 }
 @media (hover: none) {
   .form .field input:active {
-    box-shadow: 0 0 1rem 0 var(--color-semi-light);
+    box-shadow: 0 0 0.625rem var(--color-border);
   }
 }
 .form .field input:focus {
-  box-shadow: 0 0 1rem 0 var(--color-dark-3);
-  background-color: var(--color-dark-3);
+  box-shadow: 0 0 0.625rem var(--color-border);
 }
 .form .field input:focus label {
   margin-bottom: 5px;
@@ -487,13 +491,13 @@ html.is-dark-theme .switcher__theme-span:last-child svg {
 .form .button {
   width: 15.625rem;
   height: 3.125rem;
-  border: 0.0625rem solid var(--color-dark);
+  border: 0.0625rem solid var(--color-border);
   border-radius: 1.875rem;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 1.375rem;
   transition: 0.2s linear;
-  color: var(--color-light);
+  color: var(--color-font);
   background: transparent;
   text-align: center;
   position: relative;

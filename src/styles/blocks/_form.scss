@@ -6,7 +6,7 @@
   justify-content: space-between;
   align-items: center;
   padding: rems(40);
-  border: rems(1) solid var(--color-dark);
+  border: rems(1) solid var(--color-border);
   border-radius: rems(60);
   text-align: center;
   row-gap: rems(18);
@@ -15,6 +15,11 @@
   position: relative;
   z-index: 2;
   box-shadow: 0 0 rems(17) var(--color-accent);
+
+  &__title {
+    font-size: rems(24);
+    user-select: none;
+  }
 
   label {
     font-size: 16px;
@@ -44,8 +49,9 @@
     &__errors {
       color: var(--color-accent);
       transition: var(--transition);
-      font-size: 9px;
+      font-size: rems(12);
       max-width: 240px;
+      text-align: left;
     }
 
     &__label {
@@ -65,9 +71,9 @@
       width: rems(320);
       height: rems(40);
       background: none;
-      border: 1px solid var(--color-semi-light);
+      border: 1px solid var(--color-border);
       border-radius: 3rem;
-      color: var(--color-light);
+      color: var(--color-font);
       padding-inline: 0.5rem;
       outline: 1px solid transparent;
       transition: var(--transition);
@@ -84,12 +90,11 @@
       }
 
       @include hover {
-        box-shadow: 0 0 1rem 0 var(--color-semi-light);
+        box-shadow: 0 0 rems(10) var(--color-border);
       }
 
       &:focus {
-        box-shadow: 0 0 1rem 0 var(--color-dark-3);
-        background-color: var(--color-dark-3);
+        box-shadow: 0 0 rems(10) var(--color-border);
       }
 
       &:focus label {
@@ -101,13 +106,13 @@
   .button {
     width: rems(250);
     height: rems(50);
-    border: rems(1) solid var(--color-dark);
+    border: rems(1) solid var(--color-border);
     border-radius: rems(30);
     text-transform: uppercase;
     font-weight: 700;
     font-size: rems(22);
     transition: 0.2s linear;
-    color: var(--color-light);
+    color: var(--color-font);
     background: transparent;
     text-align: center;
     position: relative;
